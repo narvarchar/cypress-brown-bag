@@ -12,7 +12,11 @@ describe('track', () => {
       cy.route({
         method: 'GET',
         url: '**/trackinginfo/**',
-        response: trackingInfo,
+        response: {
+          ...trackingInfo,
+          narvar_status: 'INTRANSIT',
+          status: 'On its way',
+        },
       });
 
       cy.visit(
@@ -25,6 +29,8 @@ describe('track', () => {
           },
         },
       );
+
+      cy.get('.tracking-status-container').should('contain', 'On its way');
 
       cy.get('#feedback-survey-stars').find('.survey-stars-star').last().click();
       cy.get('#feedback-comment-input').type('I loved tracking my package! Narvar is the best!');
