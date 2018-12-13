@@ -2,7 +2,7 @@
   "name": "cypressBrownBag",
   "description": "A demonstration of Cypress integration test framework!",
   "scripts": {
-    "cypress": "cypress open"
+    "cypress": "cypress run"
   },
   "devDependencies": {
     "cypress": "^3.1.3"
