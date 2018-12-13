@@ -9,17 +9,17 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v2-node-{{ arch }}-{{ .Branch }}-{{ checksum "package-lock.json" }}
-            - v2-node-{{ arch }}-{{ .Branch }}-
-            - v2-node-{{ arch }}-
+            - v3-node-{{ arch }}-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - v3-node-{{ arch }}-{{ .Branch }}-
+            - v3-node-{{ arch }}-
       - run: npm i
       - save_cache:
-          key: v2-node-{{ arch }}-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: v3-node-{{ arch }}-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
-            - ~/.npm
+            - ~/cypress-brown-bag/node_modules
             - ~/.cache
       - run: npm run cypress
       - store_artifacts:
-          path: cypress/videos
-      - store_artifacts:
           path: cypress/screenshots
+      - store_artifacts:
+          path: cypress/videos
