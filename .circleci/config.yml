@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: cypress/browsers:chrome67
+      - image: cypress/base:8
     working_directory: ~/cypress-brown-bag
     steps:
       - checkout
